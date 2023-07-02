@@ -6,6 +6,7 @@
         {
             Задания();
             Анкета();
+            Цвета();
         }
 
         public static void Задания()
@@ -35,7 +36,19 @@
             float MyShoeSize = 38;
             Console.WriteLine("My shoe size is " + MyShoeSize);
         }
+        public static void Цвета()
+        {
 
-
+        }
     }
+
+
+    enum Semaphore : short
+    {
+        Red = 100,
+        Yellow,
+        Green,
+    }
+
+
 }
