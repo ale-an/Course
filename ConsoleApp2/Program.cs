@@ -38,16 +38,18 @@
         }
         public static void Цвета()
         {
-
+            Console.WriteLine(Semaphore.Red);
+            Console.WriteLine(Semaphore.Yellow);
+            Console.WriteLine(Semaphore.Green);
         }
     }
 
 
-    enum Semaphore : short
+    enum Semaphore
     {
         Red = 100,
-        Yellow,
-        Green,
+        Yellow = 200,
+        Green = 300
     }
 
 
