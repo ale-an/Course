@@ -7,6 +7,7 @@
             Задания();
             Анкета();
             Цвета();
+            Задание3_6_8();
         }
 
         public static void Задания()
@@ -41,6 +42,12 @@
             Console.WriteLine(Semaphore.Red);
             Console.WriteLine(Semaphore.Yellow);
             Console.WriteLine(Semaphore.Green);
+        }
+        private static void Задание3_6_8()
+        {
+            double result = 10 % 3;
+            Console.WriteLine(result);
+            Console.ReadKey();
         }
     }
 
