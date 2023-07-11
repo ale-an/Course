@@ -8,6 +8,7 @@ namespace Module4
         {
             Task_4_1_4();
             Task_4_1_5();
+            Task_4_1_12();
         }
         private static void Task_4_1_4()
         {
@@ -23,7 +24,20 @@ namespace Module4
             double Y;
             //bool C = (A < B) | (X > Y);
         }
+        private static void Task_4_1_12()
+        {
+            var a = 7;
+            var b = 7;
 
-      
+            if (a == b)
+            {
+                Console.WriteLine("Условие истинно");
+            }
+            else
+            {
+                Console.WriteLine("Условие ложно");
+            };
+        }
+
     }
 }
