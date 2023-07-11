@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp2
+﻿namespace Module3
 {
     class MainClass
     {
@@ -38,6 +38,7 @@
             float MyShoeSize = 38;
             Console.WriteLine("My shoe size is " + MyShoeSize);
         }
+
         public static void Цвета()
         {
             Console.WriteLine(Semaphore.Red);
@@ -63,13 +64,10 @@
         }
     }
 
-
     enum Semaphore
     {
         Red = 100,
         Yellow = 200,
         Green = 300
     }
-
-
 }
