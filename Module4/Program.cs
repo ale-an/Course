@@ -11,6 +11,7 @@ namespace Module4
             Task_4_1_12();
             Task_4_1_17();
             Task_4_1_18();
+            Task_4_2_11();
         }
         private static void Task_4_1_4()
         {
@@ -105,6 +106,22 @@ namespace Module4
                     Console.WriteLine("Your color is cyan!");
                     break;
             }
+        }
+        private static void Task_4_2_11()
+        {
+            int t = 0; 
+
+            do
+            {
+                Console.WriteLine(t);
+
+                Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+                switch (Console.ReadLine()) { }
+
+                t++;
+            }
+            while (t < 3); 
+
         }
 
     }
