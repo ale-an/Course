@@ -7,15 +7,17 @@ namespace Module4
     {
         static void Main(string[] args)
         {
-            Task_4_1_4();
+/*            Task_4_1_4();
             Task_4_1_5();
             Task_4_1_12();
             Task_4_1_17();
             Task_4_1_18();
             Task_4_2_11();
             Task_Evgenia();
-            Task_4_3_7();
+            Task_4_3_7();*/
+            Task_4_3_11();
         }
+
         private static void Task_4_1_4()
         {
             string A;
@@ -149,5 +151,17 @@ namespace Module4
                 Console.Write(name[name.Length - i] + " ");
             }
         }
-    }
+        private static void Task_4_3_11()
+        {
+            int[,] array = { { 1, 2, 3 }, { 5, 6, 7 }, { 8, 9, 10 }, { 11, 12, 13 } };
+
+            for (int i = 0; i < array.GetUpperBound(1) + 1; i++)
+            {
+                for (int k = 0; k < array.GetUpperBound(0) + 1; k++)
+                    Console.Write(array[k, i] + " ");
+
+                Console.WriteLine();
+            }
+        }
+        }
 }
