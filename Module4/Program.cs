@@ -20,9 +20,8 @@ namespace Module4
             Task_4_3_13();
             Task_4_3_14();
             Task_4_3_15();
+            Task_4_3_16();
         }
-
-
         private static void Task_4_1_4()
         {
             string A;
@@ -246,6 +245,17 @@ namespace Module4
         {
             int r = 0;
             var arr = new int[] {-5, -6, -9, 1, 2, 3, 4};
+            foreach (var number in arr)
+            {
+                if (number > 0)
+                    r++;
+            }
+            Console.WriteLine(r);
+        }
+        private static void Task_4_3_16()
+        {
+            int r = 0;
+            int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
             foreach (var number in arr)
             {
                 if (number > 0)
