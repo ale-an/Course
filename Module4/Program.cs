@@ -7,13 +7,13 @@ namespace Module4
     {
         static void Main(string[] args)
         {
-/*            Task_4_1_4();
+            Task_4_1_4();
             Task_4_1_5();
             Task_4_1_12();
             Task_4_1_17();
             Task_4_1_18();
             Task_4_2_11();
-            Task_Evgenia();*/
+            Task_Evgenia();
             Task_4_3_7();
         }
         private static void Task_4_1_4()
@@ -148,18 +148,6 @@ namespace Module4
             {
                 Console.Write(name[name.Length - i] + " ");
             }
-
-            // Алена, Длина = 5
-            // 01234
-            // 1. i = 1; name[5 - 1]; а
-            // 2. i = 2; name[5 - 2]; н
-            // 3. i = 3; name[5 - 3]; е
-            // 4. i = 4; name[5 - 4]; л
-            // 5. i = 5; name[5 - 5]; А
-            
-            // i =< 5, i < 6
-
-            
         }
     }
 }
