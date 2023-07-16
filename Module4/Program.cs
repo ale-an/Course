@@ -22,7 +22,10 @@ namespace Module4
             Task_4_3_15();
             Task_4_3_16();
             Task_4_3_17();
+            Task_4_4_2();
+            
         }
+
 
 
         private static void Task_4_1_4()
@@ -308,6 +311,19 @@ namespace Module4
 
                 Console.WriteLine();
             }
+        }
+
+        private static void Task_4_4_2()
+        {
+            (string name, int age) anketa;
+            Console.Write("Введите Ваше имя: ");
+            anketa.name = Console.ReadLine();
+            Console.Write("Введите Ваш возраст цифрами: ");
+            anketa.age = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("Ваше имя: {0}", anketa.name);
+            Console.WriteLine("Ваш возраст: {0}", anketa.age);
+
         }
     }
 }
