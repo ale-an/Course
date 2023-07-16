@@ -7,21 +7,24 @@ namespace Module4
     {
         static void Main(string[] args)
         {
-            Task_4_1_4();
-            Task_4_1_5();
-            Task_4_1_12();
-            Task_4_1_17();
-            Task_4_1_18();
-            Task_4_2_11();
-            Task_Evgenia();
-            Task_4_3_7();
-            Task_4_3_11();
-            Task_4_3_12();
-            Task_4_3_13();
-            Task_4_3_14();
-            Task_4_3_15();
-            Task_4_3_16();
+            // Task_4_1_4();
+            // Task_4_1_5();
+            // Task_4_1_12();
+            // Task_4_1_17();
+            // Task_4_1_18();
+            // Task_4_2_11();
+            // Task_Evgenia();
+            // Task_4_3_7();
+            // Task_4_3_11();
+            // Task_4_3_12();
+            // Task_4_3_13();
+            // Task_4_3_14();
+            // Task_4_3_15();
+            // Task_4_3_16();
+            Task_4_3_17();
         }
+
+
         private static void Task_4_1_4()
         {
             string A;
@@ -250,18 +253,61 @@ namespace Module4
                 if (number > 0)
                     r++;
             }
+
             Console.WriteLine(r);
         }
+
         private static void Task_4_3_16()
         {
             int r = 0;
-            int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
+            int[,] arr = {{-5, 6, 9, 1, 2, -3}, {-8, 8, 1, 1, 2, -3}};
             foreach (var number in arr)
             {
                 if (number > 0)
                     r++;
             }
+
             Console.WriteLine(r);
+        }
+
+        private static void Task_4_3_17()
+        {
+            int[,] arr = {{-5, 6, 9, 1, 2, -3}, {-8, 8, 1, 1, 2, -3}};
+            for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < arr.GetUpperBound(1) + 1; j++)
+                {
+                    Console.Write(arr[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+            for (int k = 0; k <= arr.GetUpperBound(0); k++)
+            {
+                for (int i = 0; i <= arr.GetUpperBound(1); i++)
+                {
+                    for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                    {
+                        if (arr[k, i] > arr[k, j])
+                        {
+                            var t = arr[k, i];
+                            arr[k, i] = arr[k, j];
+                            arr[k, j] = t;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    Console.Write(arr[i, j] + " ");
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }
