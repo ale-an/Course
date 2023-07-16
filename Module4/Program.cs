@@ -24,10 +24,9 @@ namespace Module4
             Task_4_3_17();
             Task_4_4_2();
             Task_4_4_3();
+            Task_4_4_5();
             
         }
-
-
         private static void Task_4_1_4()
         {
             string A;
@@ -339,6 +338,21 @@ namespace Module4
             Console.WriteLine("Ваше имя: {0}", name);
             Console.WriteLine("Ваш возраст: {0}", age);
             
+        }
+        private static void Task_4_4_5()
+        {
+            (string Name, string Type, double Age, int NameCount) Pet;
+
+            Console.Write("Введите имя булочки ");
+            Pet.Name = Console.ReadLine();
+            Pet.NameCount = Pet.Name.Length;
+            
+            Console.Write("Введите породу булочки ");
+            Pet.Type = Console.ReadLine();
+            
+            Console.Write("Введите возраст булочки ");
+            Pet.Age = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Длина имени Вашей булочки " + Pet.NameCount);
         }
     }
 }
