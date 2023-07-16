@@ -19,6 +19,7 @@ namespace Module4
             Task_4_3_12();
             Task_4_3_13();
             Task_4_3_14();
+            Task_4_3_15();
         }
 
 
@@ -239,6 +240,18 @@ namespace Module4
                     Console.Write(item + " ");
                 }
             }
+        }
+
+        private static void Task_4_3_15()
+        {
+            int r = 0;
+            var arr = new int[] {-5, -6, -9, 1, 2, 3, 4};
+            foreach (var number in arr)
+            {
+                if (number > 0)
+                    r++;
+            }
+            Console.WriteLine(r);
         }
     }
 }
