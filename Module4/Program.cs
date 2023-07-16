@@ -17,7 +17,9 @@ namespace Module4
             Task_4_3_7();
             Task_4_3_11();
             Task_4_3_12();
+            Task_4_3_13();
         }
+
 
 
         private static void Task_4_1_4()
@@ -207,6 +209,18 @@ namespace Module4
             {
                 Console.Write(arr[i] + " ");
             }
+        }
+        private static void Task_4_3_13()
+        {
+            var arr = new int[] { 5, 6, 9, 1, 2, 3, 4};
+            var result = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                result += arr[i];
+            }
+
+            Console.WriteLine(result);
         }
     }
 }
