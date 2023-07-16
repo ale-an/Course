@@ -7,14 +7,14 @@ namespace Module4
     {
         static void Main(string[] args)
         {
-/*            Task_4_1_4();
+            Task_4_1_4();
             Task_4_1_5();
             Task_4_1_12();
             Task_4_1_17();
             Task_4_1_18();
             Task_4_2_11();
             Task_Evgenia();
-            Task_4_3_7();*/
+            Task_4_3_7();
             Task_4_3_11();
         }
 
