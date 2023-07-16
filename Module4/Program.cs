@@ -18,8 +18,8 @@ namespace Module4
             Task_4_3_11();
             Task_4_3_12();
             Task_4_3_13();
+            Task_4_3_14();
         }
-
 
 
         private static void Task_4_1_4()
@@ -210,9 +210,10 @@ namespace Module4
                 Console.Write(arr[i] + " ");
             }
         }
+
         private static void Task_4_3_13()
         {
-            var arr = new int[] { 5, 6, 9, 1, 2, 3, 4};
+            var arr = new int[] {5, 6, 9, 1, 2, 3, 4};
             var result = 0;
 
             for (int i = 0; i < arr.Length; i++)
@@ -221,6 +222,23 @@ namespace Module4
             }
 
             Console.WriteLine(result);
+        }
+
+        private static void Task_4_3_14()
+        {
+            int[][] array = new int[3][];
+
+            array[0] = new int[2] {1, 2};
+            array[1] = new int[3] {1, 2, 3};
+            array[2] = new int[5] {1, 2, 3, 4, 5};
+
+            foreach (var num in array)
+            {
+                foreach (var item in num)
+                {
+                    Console.Write(item + " ");
+                }
+            }
         }
     }
 }
