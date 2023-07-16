@@ -16,7 +16,9 @@ namespace Module4
             Task_Evgenia();
             Task_4_3_7();
             Task_4_3_11();
+            Task_4_3_12();
         }
+
 
         private static void Task_4_1_4()
         {
@@ -24,6 +26,7 @@ namespace Module4
             string B;
             //bool C = A != B;
         }
+
         private static void Task_4_1_5()
         {
             int A;
@@ -32,6 +35,7 @@ namespace Module4
             double Y;
             //bool C = (A < B) | (X > Y);
         }
+
         private static void Task_4_1_12()
         {
             var a = 7;
@@ -44,8 +48,11 @@ namespace Module4
             else
             {
                 Console.WriteLine("Условие ложно");
-            };
+            }
+
+            ;
         }
+
         private static void Task_4_1_17()
         {
             Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
@@ -73,8 +80,11 @@ namespace Module4
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 Console.WriteLine("Your color is cyan!");
-            };
+            }
+
+            ;
         }
+
         private static void Task_4_1_18()
         {
             Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
@@ -112,22 +122,24 @@ namespace Module4
                     break;
             }
         }
+
         private static void Task_4_2_11()
         {
-            int t = 0; 
+            int t = 0;
 
             do
             {
                 Console.WriteLine(t);
 
                 Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
-                switch (Console.ReadLine()) { }
+                switch (Console.ReadLine())
+                {
+                }
 
                 t++;
-            }
-            while (t < 3); 
-       
+            } while (t < 3);
         }
+
         private static void Task_Evgenia()
         {
             Console.WriteLine("Напишите своё имя");
@@ -138,9 +150,11 @@ namespace Module4
             {
                 Console.Write(symbol + " ");
             }
+
             char last = name[name.Length - 1];
             Console.WriteLine("Последняя буква - " + last);
         }
+
         private static void Task_4_3_7()
         {
             Console.WriteLine("Напишите своё имя");
@@ -151,9 +165,10 @@ namespace Module4
                 Console.Write(name[name.Length - i] + " ");
             }
         }
+
         private static void Task_4_3_11()
         {
-            int[,] array = { { 1, 2, 3 }, { 5, 6, 7 }, { 8, 9, 10 }, { 11, 12, 13 } };
+            int[,] array = {{1, 2, 3}, {5, 6, 7}, {8, 9, 10}, {11, 12, 13}};
 
             for (int i = 0; i < array.GetUpperBound(1) + 1; i++)
             {
@@ -163,5 +178,35 @@ namespace Module4
                 Console.WriteLine();
             }
         }
+
+        private static void Task_4_3_12()
+        {
+            var arr = new int[] {5, 6, 9, 1, 2, 3, 4};
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr[i] < arr[j])
+                    {
+                        var t = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = t;
+                    }
+                }
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
         }
+    }
 }
