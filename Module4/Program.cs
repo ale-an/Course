@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Module4
 {
@@ -6,13 +7,15 @@ namespace Module4
     {
         static void Main(string[] args)
         {
-            Task_4_1_4();
+            /*Task_4_1_4();
             Task_4_1_5();
             Task_4_1_12();
             Task_4_1_17();
             Task_4_1_18();
-            Task_4_2_11();
+            Task_4_2_11();*/
+            Task_Evgenia();
         }
+
         private static void Task_4_1_4()
         {
             string A;
@@ -121,7 +124,20 @@ namespace Module4
                 t++;
             }
             while (t < 3); 
+       
+        }
+        private static void Task_Evgenia()
+        {
+            Console.WriteLine("Напишите своё имя");
+            var name = Console.ReadLine();
+            Console.WriteLine("Ваше имя по буквам: ");
 
+            foreach (var symbol in name)
+            {
+                Console.Write(symbol + " ");
+            }
+            char last = name[name.Length - 1];
+            Console.WriteLine("Последняя буква - " + last);
         }
 
     }
