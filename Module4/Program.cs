@@ -25,8 +25,9 @@ namespace Module4
             Task_4_4_2();
             Task_4_4_3();
             Task_4_4_5();
-            
+            Workshop();
         }
+
         private static void Task_4_1_4()
         {
             string A;
@@ -319,26 +320,26 @@ namespace Module4
             anketa.name = Console.ReadLine();
             Console.Write("Введите Ваш возраст цифрами: ");
             anketa.age = Convert.ToInt32(Console.ReadLine());
-            
+
             Console.WriteLine("Ваше имя: {0}", anketa.name);
             Console.WriteLine("Ваш возраст: {0}", anketa.age);
-
         }
+
         private static void Task_4_4_3()
-        { 
+        {
             var (name, age) = ("Алена", 24);
             Console.WriteLine("Мое имя: {0}", name);
             Console.WriteLine("Мой возраст: {0}", age);
-            
+
             Console.Write("Введите имя: ");
             name = Console.ReadLine();
             Console.Write("Введите возраст с цифрами: ");
             age = Convert.ToInt32(Console.ReadLine());
-            
+
             Console.WriteLine("Ваше имя: {0}", name);
             Console.WriteLine("Ваш возраст: {0}", age);
-            
         }
+
         private static void Task_4_4_5()
         {
             (string Name, string Type, double Age, int NameCount) Pet;
@@ -346,13 +347,55 @@ namespace Module4
             Console.Write("Введите имя булочки ");
             Pet.Name = Console.ReadLine();
             Pet.NameCount = Pet.Name.Length;
-            
+
             Console.Write("Введите породу булочки ");
             Pet.Type = Console.ReadLine();
-            
+
             Console.Write("Введите возраст булочки ");
             Pet.Age = Convert.ToDouble(Console.ReadLine());
             Console.Write("Длина имени Вашей булочки " + Pet.NameCount);
+        }
+
+        private static void Workshop()
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                (string Name, string LastName, string Login, int LoginLength, bool HasPet, string[] favcolors, double
+                    Age) User;
+
+                Console.WriteLine("Введите имя");
+                User.Name = Console.ReadLine();
+
+                Console.WriteLine("Введите фамилию");
+                User.LastName = Console.ReadLine();
+
+                Console.WriteLine("Введите логин");
+                User.Login = Console.ReadLine();
+                User.LoginLength = User.Login.Length;
+
+                Console.WriteLine("Длина вашего логина " + User.LoginLength);
+
+                Console.WriteLine("Есть ли у вас животные? Да или Нет");
+                var answer = Console.ReadLine();
+                if (answer == "Да")
+                {
+                    User.HasPet = true;
+                }
+                else
+                {
+                    User.HasPet = false;
+                }
+
+                Console.WriteLine("Введите возраст пользователя");
+                User.Age = Convert.ToDouble(Console.ReadLine());
+
+                User.favcolors = new string[3];
+                Console.WriteLine("Введите три любимых цвета пользователя");
+                for (int i = 0; i < 3; i++)
+                {
+                    User.favcolors[i] = Console.ReadLine();
+                }
+            }
         }
     }
 }
