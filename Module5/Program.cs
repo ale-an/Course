@@ -6,8 +6,8 @@
         {
             Task_1();
             Task_5_1_5();
-        }
-
+            Task_5_1_6();
+        } 
         private static void Task_1()
         {
             (string Name, string[] Dishes) User;
@@ -71,6 +71,45 @@
             }
 
             return color;
+        }
+        private static void Task_5_1_6()
+        {
+            var array = GetArrayFromConsole();
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        static int[] GetArrayFromConsole()
+        {
+            var result = new int[5];
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+
+            Sort(result);
+
+            return result;
+        }
+
+        private static void Sort(int[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr[i] < arr[j])
+                    {
+                        var t = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = t;
+                    }
+                }
+            }
         }
     }
 }
