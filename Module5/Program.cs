@@ -7,7 +7,9 @@
             Task_1();
             Task_5_1_5();
             Task_5_1_6();
+            Task_5_2_18();
         }
+
 
 
         private static void Task_1()
@@ -130,6 +132,24 @@
                         arr[j] = t;
                     }
                 }
+            }
+        }
+        private static void Task_5_2_18()
+        {
+            var array = GetArray(10);
+            ShowArray(array, true);
+        }
+
+        static void ShowArray(int [] array, bool flag = false)
+        {
+            var temp = array;
+            if (flag)
+            {
+                Sort(temp);
+            }
+            foreach (var item in temp)
+            {
+                Console.WriteLine(item);
             }
         }
     }
