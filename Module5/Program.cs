@@ -39,7 +39,7 @@
             var favcolors = new string[3];
             for (int i = 0; i < 3; i++)
             {
-                favcolors[i] = ShowColor(anketa.name);
+                favcolors[i] = ShowColor(anketa.name, anketa.age);
             }
 
             Console.WriteLine("Ваши любимые цвета ");
@@ -49,9 +49,9 @@
             }
         }
 
-        private static string ShowColor(string name)
+        private static string ShowColor(string name, int age)
         {
-            Console.WriteLine($"{name}, напишите свой любимый цвет на английском с маленькой буквы");
+            Console.WriteLine($"{name}, {age} лет, \nНапишите свой любимый цвет на английском с маленькой буквы");
             var color = Console.ReadLine();
 
             switch (color)
