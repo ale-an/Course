@@ -7,7 +7,9 @@
             Task_1();
             Task_5_1_5();
             Task_5_1_6();
-        } 
+        }
+
+
         private static void Task_1()
         {
             (string Name, string[] Dishes) User;
@@ -25,18 +27,29 @@
 
         private static void Task_5_1_5()
         {
+            (string name, int age) anketa;
+            Console.Write("Введите Ваше имя: ");
+            anketa.name = Console.ReadLine();
+            Console.Write("Введите Ваш возраст цифрами: ");
+            anketa.age = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Ваше имя: {0}", anketa.name);
+            Console.WriteLine("Ваш возраст: {0}", anketa.age);
+
             var favcolors = new string[3];
             for (int i = 0; i < 3; i++)
             {
-                favcolors[i] = ShowColor();
+                favcolors[i] = ShowColor(anketa.name);
             }
+
             Console.WriteLine("Ваши любимые цвета ");
             for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine(favcolors[i]);
             }
         }
-        private static string ShowColor()
+
+        private static string ShowColor(string name)
         {
             Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
             var color = Console.ReadLine();
@@ -72,6 +85,7 @@
 
             return color;
         }
+
         private static void Task_5_1_6()
         {
             var array = GetArrayFromConsole();
