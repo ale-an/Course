@@ -8,9 +8,8 @@
             Task_5_1_5();
             Task_5_1_6();
             Task_5_2_18();
+            Task_5_3_1();
         }
-
-
 
         private static void Task_1()
         {
@@ -99,18 +98,19 @@
 
         static int[] GetArrayFromConsole()
         {
-            var result = GetArray();
+            var num = 6;
+            var result = GetArray(ref num);
 
-            Sort(result);
+            // Sort(result);
 
             return result;
         }
 
-        private static int[] GetArray(int num = 5)
+        private static int[] GetArray(ref int num)
         {
             var result = new int[num];
 
-        for (int i = 0; i < result.Length; i++)
+            for (int i = 0; i < result.Length; i++)
             {
                 Console.WriteLine("Введите элемент массива номер {0}", i + 1);
                 result[i] = int.Parse(Console.ReadLine());
@@ -119,38 +119,80 @@
             return result;
         }
 
-        private static void Sort(int[] arr)
+        private static void Sort(int[] arr, out int[] desc, out int[] asc)
         {
-            for (int i = 0; i < arr.Length; i++)
+            desc = SortDesc(arr);
+            asc = SortAsc(arr);
+        }
+
+        private static int[] SortAsc(int[] arr)
+        {
+            var temp = arr;
+            for (int i = 0; i < temp.Length; i++)
             {
-                for (int j = 0; j < arr.Length; j++)
+                for (int j = 0; j < temp.Length; j++)
                 {
-                    if (arr[i] < arr[j])
+                    if (temp[i] < temp[j])
                     {
-                        var t = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = t;
+                        var t = temp[i];
+                        temp[i] = temp[j];
+                        temp[j] = t;
                     }
                 }
             }
+
+            return temp;
+        }
+        private static int[] SortDesc(int[] arr)
+        {
+            var temp = arr;
+            for (int i = 0; i < temp.Length; i++)
+            {
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    if (temp[i] > temp[j])
+                    {
+                        var t = temp[i];
+                        temp[i] = temp[j];
+                        temp[j] = t;
+                    }
+                }
+            }
+
+            return temp;
         }
         private static void Task_5_2_18()
         {
-            var array = GetArray(10);
+            var num = 10;
+            var array = GetArray(ref num);
             ShowArray(array, true);
         }
 
-        static void ShowArray(int [] array, bool flag = false)
+        static void ShowArray(int[] array, bool flag = false)
         {
             var temp = array;
             if (flag)
             {
-                Sort(temp);
+                // Sort(temp);
             }
+
             foreach (var item in temp)
             {
                 Console.WriteLine(item);
             }
         }
+
+        private static void Task_5_3_1()
+        {
+            var age = 0;
+            ChangeAge(ref age);
+            Console.WriteLine(age);
+        }
+
+        private static void ChangeAge(ref int age)
+        {
+            age += 1;
+        }
+
     }
 }
