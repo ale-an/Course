@@ -10,6 +10,7 @@
             Task_5_2_18();
             Task_5_3_1();
             Task_5_5_3();
+            Task_5_5_8();
         }
 
         private static void Task_1()
@@ -218,13 +219,37 @@
             {
                 modif = modif.Remove(0, 2);
             }
+
             Console.WriteLine($"...{modif}");
 
             if (deep > 1)
             {
                 Echo(modif, deep - 1);
             }
-            
+        }
+
+        private static void Task_5_5_8()
+        {
+            Console.WriteLine(PowerUp(2, 10));
+        }
+
+        private static int PowerUp(int N, byte pow)
+        {
+            if (pow == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                if (pow == 1)
+                {
+                    return N;
+                }
+                else
+                {
+                    return N * PowerUp(N, --pow);
+                }
+            }
         }
     }
 }
