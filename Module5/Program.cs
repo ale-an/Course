@@ -212,6 +212,7 @@
 
         static void Echo(string saidworld, int deep)
         {
+            Console.BackgroundColor = (ConsoleColor) deep;
             var modif = saidworld;
             if (modif.Length > 2)
             {
@@ -223,8 +224,7 @@
             {
                 Echo(modif, deep - 1);
             }
-
-            ;
+            
         }
     }
 }
