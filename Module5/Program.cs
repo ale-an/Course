@@ -1,4 +1,6 @@
-﻿namespace Module5
+﻿using Microsoft.VisualBasic.CompilerServices;
+
+namespace Module5
 {
     internal class Program
     {
@@ -11,6 +13,7 @@
             Task_5_3_1();
             Task_5_5_3();
             Task_5_5_8();
+            Project_Task();
         }
 
         private static void Task_1()
@@ -249,6 +252,109 @@
                 {
                     return N * PowerUp(N, --pow);
                 }
+            }
+        }
+
+        private static void Project_Task()
+        {
+            var anketa = GetAnketa();
+            ShowAnketa(anketa);
+        }
+
+        private static int EnterInt()
+        {
+            if (int.TryParse(Console.ReadLine(), out int number))
+            {
+                if (number > 0)
+                {
+                    return number;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка! Введите положительное число: ");
+                    return EnterInt();
+                }
+            }
+
+            Console.WriteLine("Ошибка! Введите число: ");
+            return EnterInt();
+        }
+
+        private static (string name, string lastName, int age, bool hasPet, string[] pets, string[] favcolors)
+            GetAnketa()
+        {
+            (string name, string lastName, int age, bool hasPet, string[] pets, string[] favcolors) anketa = new();
+            Console.Write("Введите Ваше имя: ");
+            anketa.name = Console.ReadLine();
+
+            Console.Write("Введите Вашу фамилию: ");
+            anketa.lastName = Console.ReadLine();
+
+            Console.Write("Введите Ваш возраст цифрами: ");
+            anketa.age = EnterInt();
+
+            Console.WriteLine("Есть ли у вас животные? Да или нет");
+            var answer = Console.ReadLine();
+            if (answer == "Да")
+            {
+                anketa.hasPet = true;
+                Console.WriteLine("Сколько у Вас животных?");
+                var petCount = EnterInt();
+                anketa.pets = GetPets(petCount);
+            }
+            else
+            {
+                anketa.hasPet = false;
+            }
+
+            Console.WriteLine("Сколько у Вас любимых цветов?");
+            var colorCount = EnterInt();
+            anketa.favcolors = GetColors(colorCount);
+
+
+            return anketa;
+        }
+
+        private static string[] GetPets(int petCount)
+        {
+            var pets = new string[petCount];
+            Console.WriteLine("Напишите их клички: ");
+            for (int i = 0; i < pets.Length; i++)
+            {
+                pets[i] = Console.ReadLine();
+            }
+
+            return pets;
+        }
+
+        private static string[] GetColors(int colorCount)
+        {
+            var favcolors = new string[colorCount];
+            Console.WriteLine("Напишите цвета: ");
+            for (int i = 0; i < favcolors.Length; i++)
+            {
+                favcolors[i] = Console.ReadLine();
+            }
+
+            return favcolors;
+        }
+
+        private static void ShowAnketa(
+            (string name, string lastName, int age, bool hasPet, string[] pets, string[] favcolors) anketa)
+        {
+            Console.WriteLine($"Ваше имя: {anketa.name}");
+            Console.WriteLine($"Ваша фамилия: {anketa.lastName}");
+            Console.WriteLine($"Ваш возраст: {anketa.age}");
+            Console.WriteLine("Ваши питомцы: ");
+            foreach (var pet in anketa.pets)
+            {
+                Console.WriteLine(pet);
+            }
+
+            Console.WriteLine("Ваши любимые цвета: ");
+            foreach (var color in anketa.favcolors)
+            {
+                Console.WriteLine(color);
             }
         }
     }
