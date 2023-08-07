@@ -1,4 +1,6 @@
-﻿namespace Module7;
+﻿using System.Diagnostics;
+
+namespace Module7;
 
 class BaseClass
 {
@@ -7,6 +9,11 @@ class BaseClass
     public BaseClass(string name)
     {
         Name = name;
+    }
+
+    public virtual void Display()
+    {
+        Console.WriteLine("Метод класса BaseClass");
     }
 }
 
@@ -25,5 +32,10 @@ class DerivedClass : BaseClass
     {
         Description = description;
         Counter = counter;
+    }
+
+    public override void Display()
+    {
+        Console.WriteLine("Метод класса DerivedClass");
     }
 }
