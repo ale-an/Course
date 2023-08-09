@@ -1,30 +1,38 @@
 ﻿namespace Module7;
 
-public class Car<T1>
+public class Car<T1> where T1 : Engine
 {
     public T1 Engine;
 
-    public virtual void ChangePart<T2>(T2 newPart)
+    public virtual void ChangePart<T2>(T2 newPart) where T2 : CarPart
     {
     }
 }
 
-public class ElectricEngine
+public abstract class Engine
 {
 }
 
-public class GasEngine
+public class ElectricEngine : Engine
 {
 }
 
-public class Battery
+public class GasEngine : Engine
 {
 }
 
-public class Differential
+public abstract class CarPart
 {
 }
 
-public class Wheel
+public class Battery : CarPart
+{
+}
+
+public class Differential : CarPart
+{
+}
+
+public class Wheel : CarPart
 {
 }
