@@ -9,10 +9,14 @@
 
         static void GetCatalogs()
         {
-            string
-                dirName = "C:\\";
+            string dirName = "C:\\";
             if (Directory.Exists(dirName))
             {
+                DirectoryInfo dirInfo = new DirectoryInfo(dirName + "newFolder");
+                
+                if(!dirInfo.Exists)
+                    dirInfo.Create();
+
                 string[] dirs = Directory.GetDirectories(dirName);
                 var dirsLength = dirs.Length;
                 
