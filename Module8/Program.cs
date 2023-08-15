@@ -55,6 +55,12 @@ namespace DirectoryManager
                     Console.WriteLine(str);
                 }
             }
+            
+            var fileInfo = new FileInfo(filePath);
+            using (StreamWriter sw = fileInfo.AppendText())
+            {
+                sw.WriteLine($"//{DateTime.Now}");
+            }	
         }
     }
 }
