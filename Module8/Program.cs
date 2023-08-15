@@ -1,4 +1,6 @@
-﻿namespace DirectoryManager
+﻿using Microsoft.VisualBasic.FileIO;
+
+namespace DirectoryManager
 {
     class Program
     {
@@ -27,6 +29,17 @@
                 
                 dirInfo.Delete(true);
             }
+        }
+
+        static void NewFolder()
+        {
+            var dirName = "C:\\Users\\tipoy\\Desktop\\";
+            DirectoryInfo dirInfo = new DirectoryInfo(dirName + "testFolder");
+                
+            if(!dirInfo.Exists)
+                dirInfo.Create();
+            
+            FileSystem.DeleteDirectory(dirInfo.FullName, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
         }
     }
 }
