@@ -24,6 +24,8 @@
                 var filesLength = files.Length;
                 var sum = dirsLength + filesLength;
                 Console.WriteLine($"Всего {sum} файлов и папок");
+                
+                dirInfo.Delete(true);
             }
         }
     }
