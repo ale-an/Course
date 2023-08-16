@@ -8,10 +8,12 @@ namespace DirectoryManager
     {
         static void Main(string[] args)
         {
-            GetCatalogs();
-            Task_8_3_1();
-            Task_8_4_1();
+            // GetCatalogs();
+            // Task_8_3_1();
+            // Task_8_4_1();
+            Task_8_4_2();
         }
+
 
         static void GetCatalogs()
         {
@@ -75,6 +77,15 @@ namespace DirectoryManager
                     var stringValue = reader.ReadString();
                     Console.WriteLine(stringValue);
                 }
+            }
+        }
+
+        private static void Task_8_4_2()
+        {
+            string settingsFileName = "C:\\Users\\tipoy\\Desktop\\BinaryFile.bin";
+            using (BinaryWriter writer = new BinaryWriter(File.Open(settingsFileName, FileMode.Create)))
+            {
+                writer.Write($"Файл изменен {DateTime.Now} на компьютере {Environment.OSVersion}");
             }
         }
     }
