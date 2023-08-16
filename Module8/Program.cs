@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using Module8;
 
 namespace DirectoryManager
 {
@@ -8,10 +10,11 @@ namespace DirectoryManager
     {
         static void Main(string[] args)
         {
-            // GetCatalogs();
-            // Task_8_3_1();
-            // Task_8_4_1();
+            GetCatalogs();
+            Task_8_3_1();
+            Task_8_4_1();
             Task_8_4_2();
+            Task_8_4_3();
         }
 
 
@@ -86,6 +89,20 @@ namespace DirectoryManager
             using (BinaryWriter writer = new BinaryWriter(File.Open(settingsFileName, FileMode.Create)))
             {
                 writer.Write($"Файл изменен {DateTime.Now} на компьютере {Environment.OSVersion}");
+            }
+        }
+
+        [Obsolete("Obsolete")]
+        private static void Task_8_4_3()
+        {
+            var contact = new Contact("Имя", 911, "какая-то почта@gmail.ru");
+            Console.WriteLine("Объект создан");
+          
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (var fs = new FileStream("myContact.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, contact);
+                Console.WriteLine("Объект сериализован");
             }
         }
     }
