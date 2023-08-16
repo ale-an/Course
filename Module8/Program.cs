@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using System;
+using System.IO;
 
 namespace DirectoryManager
 {
@@ -8,8 +10,8 @@ namespace DirectoryManager
         {
             GetCatalogs();
             Task_8_3_1();
+            Task_8_4_1();
         }
-
 
         static void GetCatalogs()
         {
@@ -55,12 +57,25 @@ namespace DirectoryManager
                     Console.WriteLine(str);
                 }
             }
-            
+
             var fileInfo = new FileInfo(filePath);
             using (StreamWriter sw = fileInfo.AppendText())
             {
                 sw.WriteLine($"//{DateTime.Now}");
-            }	
+            }
+        }
+
+        private static void Task_8_4_1()
+        {
+            string settingsFileName = "C:\\Users\\tipoy\\Desktop\\BinaryFile.bin";
+            if (File.Exists(settingsFileName))
+            {
+                using (BinaryReader reader = new BinaryReader(File.Open(settingsFileName, FileMode.Open)))
+                {
+                    var stringValue = reader.ReadString();
+                    Console.WriteLine(stringValue);
+                }
+            }
         }
     }
 }
