@@ -21,6 +21,7 @@
 
             ShowDelegate showDelegate = Subtraction;
             showDelegate += Summation;
+            showDelegate -= Summation;
             showDelegate.Invoke(1, 2);
             Console.Read();
         }
