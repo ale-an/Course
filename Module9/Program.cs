@@ -6,6 +6,12 @@
 
         delegate void ShowDelegate(int q, int w);
 
+        delegate void ShowMessageDelegate();
+
+        delegate int SuDelegate(int a, int b, int c);
+
+        delegate bool CheckLengthDelegate(string _row);
+
         static void Main(string[] args)
         {
             Task_9_1_4();
@@ -24,6 +30,17 @@
             showDelegate -= Summation;
             showDelegate.Invoke(1, 2);
             Console.Read();
+
+            ShowMessageDelegate showMessageDelegate = ShowMessage;
+            showMessageDelegate.Invoke();
+
+            SuDelegate suDelegate = Su;
+            int result = suDelegate.Invoke(1, 30, 120);
+            Console.WriteLine(result);
+
+            CheckLengthDelegate checkLengthDelegate = CheckLength;
+            bool status = checkLengthDelegate.Invoke("skill_factory");
+            Console.WriteLine(status);
         }
 
         static void Task_9_1_4()
@@ -78,6 +95,22 @@
         private static void Summation(int q, int w)
         {
             Console.WriteLine(q + w);
+        }
+
+        static void ShowMessage()
+        {
+            Console.WriteLine("Hello World!");
+        }
+
+        static int Su(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+
+        static bool CheckLength(string _row)
+        {
+            if (_row.Length > 3) return true;
+            return false;
         }
     }
 }
