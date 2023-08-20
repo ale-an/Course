@@ -45,7 +45,7 @@
             bool status = checkLengthDelegate.Invoke("skill_factory");
             Console.WriteLine(status);
 
-            RandomNumberDelegate randomNumberDelegate = delegate { return new Random().Next(0, 100); };
+            RandomNumberDelegate randomNumberDelegate = () => new Random().Next(0, 100);
             int res = randomNumberDelegate.Invoke();
             Console.WriteLine(res);
             Console.Read();
