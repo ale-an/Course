@@ -31,14 +31,14 @@
             showDelegate.Invoke(1, 2);
             Console.Read();
 
-            ShowMessageDelegate showMessageDelegate = ShowMessage;
+            Action showMessageDelegate = ShowMessage;
             showMessageDelegate.Invoke();
 
-            SuDelegate suDelegate = Su;
+            Func < int,int,int,int > suDelegate = Su;
             int result = suDelegate.Invoke(1, 30, 120);
             Console.WriteLine(result);
 
-            CheckLengthDelegate checkLengthDelegate = CheckLength;
+            Predicate < string > checkLengthDelegate = CheckLength;
             bool status = checkLengthDelegate.Invoke("skill_factory");
             Console.WriteLine(status);
         }
