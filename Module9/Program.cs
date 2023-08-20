@@ -6,7 +6,7 @@
 
         delegate void ShowDelegate(int q, int w);
 
-        delegate void ShowMessageDelegate();
+        delegate void ShowMessageDelegate(string _message);
 
         delegate int SuDelegate(int a, int b, int c);
 
@@ -31,14 +31,18 @@
             showDelegate.Invoke(1, 2);
             Console.Read();
 
-            Action showMessageDelegate = ShowMessage;
-            showMessageDelegate.Invoke();
+            ShowMessageDelegate md = delegate(string _message)
+            {
+                Console.WriteLine(_message);
+            };
+            md.Invoke("Hello World!");
+            Console.Read();
 
-            Func < int,int,int,int > suDelegate = Su;
+            Func<int, int, int, int> suDelegate = Su;
             int result = suDelegate.Invoke(1, 30, 120);
             Console.WriteLine(result);
 
-            Predicate < string > checkLengthDelegate = CheckLength;
+            Predicate<string> checkLengthDelegate = CheckLength;
             bool status = checkLengthDelegate.Invoke("skill_factory");
             Console.WriteLine(status);
         }
@@ -97,9 +101,9 @@
             Console.WriteLine(q + w);
         }
 
-        static void ShowMessage()
+        static void ShowMessage(string _message)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(_message);
         }
 
         static int Su(int a, int b, int c)
