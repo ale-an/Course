@@ -11,6 +11,8 @@
         delegate int SuDelegate(int a, int b, int c);
 
         delegate bool CheckLengthDelegate(string _row);
+        
+        delegate int RandomNumberDelegate();
 
         static void Main(string[] args)
         {
@@ -45,6 +47,14 @@
             Predicate<string> checkLengthDelegate = CheckLength;
             bool status = checkLengthDelegate.Invoke("skill_factory");
             Console.WriteLine(status);
+            
+            RandomNumberDelegate randomNumberDelegate = delegate
+            {
+                return new Random().Next(0, 100);
+            };
+            int res = randomNumberDelegate.Invoke();
+            Console.WriteLine(res);
+            Console.Read();
         }
 
         static void Task_9_1_4()
@@ -115,6 +125,10 @@
         {
             if (_row.Length > 3) return true;
             return false;
+        }
+        static int RandomNumber()
+        {
+            return new Random().Next(0, 100);
         }
     }
 }
