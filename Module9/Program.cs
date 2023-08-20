@@ -4,6 +4,8 @@
     {
         delegate int SupDelegate(int a, int b);
 
+        delegate void ShowDelegate(int q, int w);
+
         static void Main(string[] args)
         {
             Task_9_1_4();
@@ -15,6 +17,11 @@
             int d = supDelegate(6, 5);
             Console.WriteLine(c);
             Console.WriteLine(d);
+            Console.Read();
+
+            ShowDelegate showDelegate = Subtraction;
+            showDelegate += Summation;
+            showDelegate.Invoke(1, 2);
             Console.Read();
         }
 
@@ -60,6 +67,16 @@
         private static int Task_9_3_2(int a, int b)
         {
             return a - b;
+        }
+
+        private static void Subtraction(int q, int w)
+        {
+            Console.WriteLine(q - w);
+        }
+
+        private static void Summation(int q, int w)
+        {
+            Console.WriteLine(q + w);
         }
     }
 }
