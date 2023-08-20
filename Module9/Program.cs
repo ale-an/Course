@@ -12,7 +12,9 @@
 
             SupDelegate supDelegate = Task_9_3_2;
             int c = supDelegate.Invoke(6, 5);
+            int d = supDelegate(6, 5);
             Console.WriteLine(c);
+            Console.WriteLine(d);
             Console.Read();
         }
 
