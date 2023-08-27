@@ -2,7 +2,7 @@
 
 public class Worker : IWorker
 {
-    public void Build()
+    void IWorker.Build()
     {
         throw new NotImplementedException();
     }

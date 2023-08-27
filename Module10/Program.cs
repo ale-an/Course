@@ -7,6 +7,10 @@
             Writer writer = new Writer();
 
             ((IWriter) writer).Write();
+
+            var worker = new Worker();
+            
+            ((IWorker) worker).Build();
         }
     }
 
