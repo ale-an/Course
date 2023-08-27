@@ -17,12 +17,13 @@ public class FileManager : IWriter, IReader, IMailer
         throw new NotImplementedException();
     }
 }
-public interface IReader 
+
+public interface IReader
 {
     void Read();
 }
 
-public interface IMailer 
+public interface IMailer
 {
     void SendEmail();
 }

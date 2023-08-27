@@ -9,7 +9,7 @@
             ((IWriter) writer).Write();
 
             var worker = new Worker();
-            
+
             ((IWorker) worker).Build();
         }
     }
