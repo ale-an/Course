@@ -4,6 +4,9 @@
     {
         static void Main(string[] args)
         {
+            Writer writer = new Writer();
+
+            ((IWriter) writer).Write();
         }
     }
 
