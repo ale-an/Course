@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using SpeechToText.Controllers;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
@@ -9,22 +10,37 @@ namespace SpeechToText;
 
 internal class Bot : BackgroundService
 {
-    private ITelegramBotClient _telegramClient;
+    private readonly ITelegramBotClient telegramClient;
 
-    public Bot(ITelegramBotClient telegramClient)
+    // Контроллеры различных видов сообщений
+    private readonly InlineKeyboardController inlineKeyboardController;
+    private readonly TextMessageController textMessageController;
+    private readonly VoiceMessageController voiceMessageController;
+    private readonly DefaultMessageController defaultMessageController;
+
+    public Bot(
+        ITelegramBotClient telegramClient,
+        InlineKeyboardController inlineKeyboardController,
+        TextMessageController textMessageController, 
+        VoiceMessageController voiceMessageController,
+        DefaultMessageController defaultMessageController)
     {
-        _telegramClient = telegramClient;
+        this.telegramClient = telegramClient;
+        this.inlineKeyboardController = inlineKeyboardController;
+        this.textMessageController = textMessageController;
+        this.voiceMessageController = voiceMessageController;
+        this.defaultMessageController = defaultMessageController;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _telegramClient.StartReceiving(
+        telegramClient.StartReceiving(
             HandleUpdateAsync,
             HandleErrorAsync,
             new ReceiverOptions()
             {
                 AllowedUpdates = { }
-            }, // Здесь выбираем, какие обновления хотим получать. В данном случае разрешены все
+            }, // Здесь выбираем, какие обновления хотим получать. В данном случае - разрешены все
             cancellationToken: stoppingToken);
 
         Console.WriteLine("Бот запущен");
@@ -35,24 +51,30 @@ internal class Bot : BackgroundService
         //  Обрабатываем нажатия на кнопки  из Telegram Bot API: https://core.telegram.org/bots/api#callbackquery
         if (update.Type == UpdateType.CallbackQuery)
         {
-            await _telegramClient.SendTextMessageAsync(update.Message.Chat.Id,
-                $"Вы отправили сообщение {update.Message.Text}", cancellationToken: cancellationToken);
+            await inlineKeyboardController.Handle(update.CallbackQuery, cancellationToken);
             return;
         }
 
         // Обрабатываем входящие сообщения из Telegram Bot API: https://core.telegram.org/bots/api#message
         if (update.Type == UpdateType.Message)
         {
-            Console.WriteLine($"Получено сообщение {update.Message.Text}");
-            await _telegramClient.SendTextMessageAsync(update.Message.Chat.Id, $"Вы отправили сообщение {update.Message.Text}",
-                cancellationToken: cancellationToken);
-            return;
+            switch (update.Message!.Type)
+            {
+                case MessageType.Voice:
+                    await voiceMessageController.Handle(update.Message, cancellationToken);
+                    return;
+                case MessageType.Text:
+                    await textMessageController.Handle(update.Message, cancellationToken);
+                    return;
+                default:
+                    await defaultMessageController.Handle(update.Message, cancellationToken);
+                    return;
+            }
         }
     }
 
     Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
     {
-        // Задаем сообщение об ошибке в зависимости от того, какая именно ошибка произошла
         var errorMessage = exception switch
         {
             ApiRequestException apiRequestException
@@ -60,10 +82,7 @@ internal class Bot : BackgroundService
             _ => exception.ToString()
         };
 
-        // Выводим в консоль информацию об ошибке
         Console.WriteLine(errorMessage);
-
-        // Задержка перед повторным подключением
         Console.WriteLine("Ожидаем 10 секунд перед повторным подключением.");
         Thread.Sleep(10000);
 
