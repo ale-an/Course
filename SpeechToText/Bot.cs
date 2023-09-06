@@ -21,7 +21,7 @@ internal class Bot : BackgroundService
     public Bot(
         ITelegramBotClient telegramClient,
         InlineKeyboardController inlineKeyboardController,
-        TextMessageController textMessageController, 
+        TextMessageController textMessageController,
         VoiceMessageController voiceMessageController,
         DefaultMessageController defaultMessageController)
     {

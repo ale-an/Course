@@ -32,7 +32,7 @@ namespace SpeechToText
             services.AddSingleton(BuildAppSettings());
 
             services.AddSingleton<IStorage, MemoryStorage>();
-
+            services.AddSingleton<IFileHandler, AudioFileHandler>();
             // Подключаем контроллеры сообщений и кнопок
             services.AddTransient<DefaultMessageController>();
             services.AddTransient<VoiceMessageController>();
@@ -42,11 +42,17 @@ namespace SpeechToText
             services.AddSingleton<ITelegramBotClient>(provider => new TelegramBotClient(appSettings.BotToken));
             services.AddHostedService<Bot>();
         }
+
         static AppSettings BuildAppSettings()
         {
-            return new AppSettings()
+            return new AppSettings
             {
-                BotToken = "6341928157:AAGNc3wjwZcZ_MRKw3JsJIIq02BUcLxjYts"
+                DownloadsFolder = "C:\\Users\\tipoy\\Downloads",
+                BotToken = "6341928157:AAGNc3wjwZcZ_MRKw3JsJIIq02BUcLxjYts",
+                AudioFileName = "audio",
+                InputAudioFormat = "ogg",
+                OutputAudioFormat = "wav",
+                InputAudioBitrate = 48000
             };
         }
     }

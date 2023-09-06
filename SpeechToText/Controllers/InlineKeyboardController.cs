@@ -29,12 +29,14 @@ public class InlineKeyboardController
         {
             "ru" => "\u26c4 Русский",
             "en" => "\ud83c\udf08 Английский",
+            "de" => "\ud83c\udf7b Немецкий",
             _ => String.Empty
         };
 
         // Отправляем в ответ уведомление о выборе
         await telegramClient.SendTextMessageAsync(callbackQuery.From.Id,
             $"<b>Язык аудио — {languageText}.{Environment.NewLine}</b>" +
-            $"{Environment.NewLine}Его можно сменить в Главном меню.", cancellationToken: ct, parseMode: ParseMode.Html);
+            $"{Environment.NewLine}Его можно сменить в Главном меню.", cancellationToken: ct,
+            parseMode: ParseMode.Html);
     }
 }
