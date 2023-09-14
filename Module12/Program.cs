@@ -10,6 +10,7 @@ class Program
         Task_12_1_5();
     }
 
+
     private static void Task_12_1_2()
     {
         Console.WriteLine("Как Вас зовут?");
@@ -85,5 +86,31 @@ class Program
         Console.WriteLine("Оформите премиум-подписку на наш сервис, чтобы не видеть рекламу.");
         // Остановка на 3 с
         Thread.Sleep(3000);
+    }
+
+    private static int BinarySearch(int value, int[] array, int left, int right)
+    {
+        while (left <= right)
+        {
+            var middle = (left + right) / 2;
+
+            var midElement = array[middle];
+
+            if (midElement == value)
+            {
+                return middle;
+            }
+
+            if (value < midElement)
+            {
+                right = middle - 1;
+            }
+            else
+            {
+                left = middle + 1;
+            }
+        }
+
+        return -1;
     }
 }
