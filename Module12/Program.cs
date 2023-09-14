@@ -4,10 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Task_12_1_2();
-        Task_12_1_3();
-        Task_12_1_4();
-        Task_12_1_5();
+        // Task_12_1_2();
+        // Task_12_1_3();
+        // Task_12_1_4();
+        // Task_12_1_5();
+        Task_12_3_3();
     }
 
 
@@ -109,6 +110,22 @@ class Program
             {
                 left = middle + 1;
             }
+        }
+
+        return -1;
+    }
+
+    private static void Task_12_3_3()
+    {
+        Console.WriteLine(FindIndex(new[] {1, 2, 3, 5}, 4));
+    }
+
+    private static int FindIndex(int[] array, int value)
+    {
+        for (var i = 0; i < array.Length; i++)
+        {
+            if (value < array[i])
+                return i;
         }
 
         return -1;
