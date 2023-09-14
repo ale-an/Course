@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Running;
+﻿using System.Text;
+using BenchmarkDotNet.Running;
 
 namespace Module12;
 
@@ -6,12 +7,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Task_12_1_2();
-        // Task_12_1_3();
-        // Task_12_1_4();
-        // Task_12_1_5();
-        // Task_12_3_3();
+        Task_12_1_2();
+        Task_12_1_3();
+        Task_12_1_4();
+        Task_12_1_5();
+        Task_12_3_3();
+
         var summary = BenchmarkRunner.Run<Testing>();
+
+        UseString(70000);
+        Console.WriteLine("Ready to switch");
+        Console.ReadKey();
+
+        UseStringBuilder(70000);
+        Console.ReadKey();
     }
 
 
@@ -132,5 +141,31 @@ class Program
         }
 
         return -1;
+    }
+
+    static string UseString(int n)
+    {
+        string value = "";
+
+        for (int i = 0; i < n; i++)
+        {
+            value += i.ToString();
+            value += " ";
+        }
+
+        return value;
+    }
+
+    static string UseStringBuilder(int n)
+    {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < n; i++)
+        {
+            builder.Append(i.ToString());
+            builder.Append(" ");
+        }
+
+        return builder.ToString();
     }
 }
