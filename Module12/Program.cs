@@ -1,14 +1,17 @@
-﻿namespace Module12;
+﻿using BenchmarkDotNet.Running;
+
+namespace Module12;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Task_12_1_2();
-        Task_12_1_3();
-        Task_12_1_4();
-        Task_12_1_5();
-        Task_12_3_3();
+        // Task_12_1_2();
+        // Task_12_1_3();
+        // Task_12_1_4();
+        // Task_12_1_5();
+        // Task_12_3_3();
+        var summary = BenchmarkRunner.Run<Testing>();
     }
 
 
