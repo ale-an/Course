@@ -4,10 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Task_12_1_2();
-        // Task_12_1_3();
-        // Task_12_1_4();
-        // Task_12_1_5();
+        Task_12_1_2();
+        Task_12_1_3();
+        Task_12_1_4();
+        Task_12_1_5();
         Task_12_3_3();
     }
 
