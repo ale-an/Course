@@ -10,6 +10,7 @@ namespace Module13
             Task_13_1_4(new[] {1, 2, 3});
             Task_13_1_6();
             Task_13_2_5();
+            Task_13_2_6(new ArrayList {1, "string1", 2, "string2"});
         }
 
         private static bool Task_13_1_4(int[] array)
@@ -75,6 +76,28 @@ namespace Module13
             {
                 Console.WriteLine(element);
             }
+        }
+
+        private static ArrayList Task_13_2_6(ArrayList input)
+        {
+            var number = 0;
+            var str = "";
+
+            foreach (var element in input)
+            {
+                var stringElement = element.ToString();
+
+                if (int.TryParse(stringElement, out var result))
+                    number += result;
+                else
+                    str += stringElement;
+            }
+
+            return new ArrayList()
+            {
+                number,
+                str
+            };
         }
     }
 }
