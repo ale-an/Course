@@ -13,7 +13,9 @@ namespace Module13
             Task_13_2_6(new ArrayList {1, "string1", 2, "string2"});
             Task_13_3_5();
             Task_13_3_10();
+            Task_13_3_12();
         }
+
 
         private static bool Task_13_1_4(int[] array)
         {
@@ -147,14 +149,44 @@ namespace Module13
 
         private static void Task_13_3_10()
         {
-            var text =
-                "Подсчитайте, сколько уникальных символов в этом предложении, используя HashSet<T>, учитывая знаки препинания, но не учитывая пробелы в начале и в конце предложения.";
-
-            var hashset = new HashSet<char>();
+            var text = Console.ReadLine();
             
+            var hashset = new HashSet<char>();
+
             hashset.UnionWith(text);
 
             Console.WriteLine(hashset.Count);
+
+            var numbers = new[]
+            {
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+            };
+            var marks = new[]
+            {
+                ' ', ',', '!', '?', ';', '-', '—', ':', '.'
+            };
+
+            foreach (var set in hashset)
+            {
+                foreach (var number in numbers)
+                {
+                    if (set == number)
+                    {
+                        Console.WriteLine("Цифра есть!");
+                        break;
+                    }
+                }
+            }
+
+            hashset.ExceptWith(marks);
+            Console.WriteLine($"Символов без знаков препинания: {hashset.Count}");
+        }
+        private static void Task_13_3_12()
+        {
+            while (true)
+            {
+                Task_13_3_10();
+            }
         }
     }
 }
