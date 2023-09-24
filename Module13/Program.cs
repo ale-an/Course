@@ -12,6 +12,7 @@ namespace Module13
             Task_13_2_5();
             Task_13_2_6(new ArrayList {1, "string1", 2, "string2"});
             Task_13_3_5();
+            Task_13_3_10();
         }
 
         private static bool Task_13_1_4(int[] array)
@@ -142,6 +143,18 @@ namespace Module13
             {
                 months.Add(element.ToString());
             }
+        }
+
+        private static void Task_13_3_10()
+        {
+            var text =
+                "Подсчитайте, сколько уникальных символов в этом предложении, используя HashSet<T>, учитывая знаки препинания, но не учитывая пробелы в начале и в конце предложения.";
+
+            var hashset = new HashSet<char>();
+            
+            hashset.UnionWith(text);
+
+            Console.WriteLine(hashset.Count);
         }
     }
 }
