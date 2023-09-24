@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 using System.Net.Sockets;
 
 namespace Module13
@@ -15,35 +16,8 @@ namespace Module13
             Task_13_3_10();
             Task_13_3_12();
             Task_13_4_4();
+            Task_13_4_5();
         }
-
-        private static void Task_13_4_4()
-        {
-            var dictionary = new Dictionary<string, ContactDict>();
-
-            dictionary.Add("Алена", new ContactDict(79995692122, "alena@mail.ru"));
-            dictionary.Add("Мурат", new ContactDict(79651231232, "murat@mail.ru"));
-
-            foreach (var key in dictionary.Keys)
-            {
-                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
-            }
-            
-            dictionary.Add("Гордей", new ContactDict(79124322233, "gordey@mail.ru"));
-            
-            foreach (var key in dictionary.Keys)
-            {
-                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
-            }
-
-            dictionary["Гордей"].PhoneNumber = 0;
-            
-            foreach (var key in dictionary.Keys)
-            {
-                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
-            }
-        }
-
 
         private static bool Task_13_1_4(int[] array)
         {
@@ -216,6 +190,68 @@ namespace Module13
             {
                 Task_13_3_10();
             }
+        }
+
+        private static void Task_13_4_5()
+        {
+            var stopWatch = Stopwatch.StartNew();
+            var dictionary = new SortedDictionary<string, ContactDict>();
+
+            dictionary.Add("Алена", new ContactDict(79995692122, "alena@mail.ru"));
+            dictionary.Add("Мурат", new ContactDict(79651231232, "murat@mail.ru"));
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            dictionary.Add("Гордей", new ContactDict(79124322233, "gordey@mail.ru"));
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            dictionary["Гордей"].PhoneNumber = 0;
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            stopWatch.Stop();
+            Console.WriteLine($"SortedDictionary - {stopWatch.ElapsedMilliseconds} ms");
+        }
+
+        private static void Task_13_4_4()
+        {
+            var stopWatch = Stopwatch.StartNew();
+            var dictionary = new Dictionary<string, ContactDict>();
+
+            dictionary.Add("Алена", new ContactDict(79995692122, "alena@mail.ru"));
+            dictionary.Add("Мурат", new ContactDict(79651231232, "murat@mail.ru"));
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            dictionary.Add("Гордей", new ContactDict(79124322233, "gordey@mail.ru"));
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            dictionary["Гордей"].PhoneNumber = 0;
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            stopWatch.Stop();
+            Console.WriteLine($"Dictionary - {stopWatch.ElapsedMilliseconds} ms");
         }
     }
 }
