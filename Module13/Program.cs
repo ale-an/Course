@@ -13,6 +13,7 @@ namespace Module13
             Task_13_2_6(new ArrayList {1, "string1", 2, "string2"});
         }
 
+
         private static bool Task_13_1_4(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -98,6 +99,32 @@ namespace Module13
                 number,
                 str
             };
+        }
+
+        private void AddUnique(Contact contact, List<Contact> phoneBook)
+        {
+            var flag = false;
+
+            foreach (var element in phoneBook)
+            {
+                if (contact.Name == element.Name &&
+                    contact.PhoneNumber == element.PhoneNumber &&
+                    contact.Email == element.Email)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag)
+            {
+                phoneBook.Add(contact);
+            }
+
+            phoneBook.Sort((x, y) => String.Compare(x.Name, y.Name, StringComparison.Ordinal));
+
+            foreach (var element in phoneBook)
+                Console.WriteLine(element.Name + ": " + element.PhoneNumber);
         }
     }
 }
