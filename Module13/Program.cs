@@ -14,6 +14,34 @@ namespace Module13
             Task_13_3_5();
             Task_13_3_10();
             Task_13_3_12();
+            Task_13_4_4();
+        }
+
+        private static void Task_13_4_4()
+        {
+            var dictionary = new Dictionary<string, ContactDict>();
+
+            dictionary.Add("Алена", new ContactDict(79995692122, "alena@mail.ru"));
+            dictionary.Add("Мурат", new ContactDict(79651231232, "murat@mail.ru"));
+
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+            
+            dictionary.Add("Гордей", new ContactDict(79124322233, "gordey@mail.ru"));
+            
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
+
+            dictionary["Гордей"].PhoneNumber = 0;
+            
+            foreach (var key in dictionary.Keys)
+            {
+                Console.WriteLine($"{key} - {dictionary[key].PhoneNumber} - {dictionary[key].Email}");
+            }
         }
 
 
@@ -150,7 +178,7 @@ namespace Module13
         private static void Task_13_3_10()
         {
             var text = Console.ReadLine();
-            
+
             var hashset = new HashSet<char>();
 
             hashset.UnionWith(text);
@@ -181,6 +209,7 @@ namespace Module13
             hashset.ExceptWith(marks);
             Console.WriteLine($"Символов без знаков препинания: {hashset.Count}");
         }
+
         private static void Task_13_3_12()
         {
             while (true)
