@@ -6,6 +6,8 @@ namespace Module13
 {
     public class Program
     {
+        public static Stack<string> words = new Stack<string>();
+
         static void Main(string[] args)
         {
             Task_13_1_4(new[] {1, 2, 3});
@@ -17,7 +19,9 @@ namespace Module13
             Task_13_3_12();
             Task_13_4_4();
             Task_13_4_5();
+            Task_13_5_4();
         }
+
 
         private static bool Task_13_1_4(int[] array)
         {
@@ -252,6 +256,38 @@ namespace Module13
 
             stopWatch.Stop();
             Console.WriteLine($"Dictionary - {stopWatch.ElapsedMilliseconds} ms");
+        }
+
+        private static void Task_13_5_4()
+        {
+            Console.WriteLine("Введите слово и нажмите Enter, чтобы добавить его в стек.");
+            Console.WriteLine();
+
+            while (true)
+            {
+                var input = Console.ReadLine();
+                switch (input)
+                {
+                    case "pop":
+                        words.TryPop(out _);
+                        break;
+                    case "peek":
+                        if (words.TryPeek(out var peek))
+                            Console.WriteLine(peek);
+                        break;
+                    default:
+                        words.Push(input);
+                        break;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("В стеке:");
+
+                foreach (var word in words)
+                {
+                    Console.WriteLine(" " + word);
+                }
+            }
         }
     }
 }
