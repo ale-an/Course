@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net.Sockets;
 
@@ -7,6 +8,11 @@ namespace Module13
     public class Program
     {
         public static Stack<string> words = new Stack<string>();
+
+        // объявим потокобезопасную очередь (полностью идентична обычной очереди, но
+        // позволяет безопасный доступ
+        // из разных потоков)
+        public static ConcurrentQueue<string> concurrentWords = new ConcurrentQueue<string>();
 
         static void Main(string[] args)
         {
@@ -20,6 +26,7 @@ namespace Module13
             Task_13_4_4();
             Task_13_4_5();
             Task_13_5_4();
+            Task_13_5_8();
         }
 
 
@@ -288,6 +295,48 @@ namespace Module13
                     Console.WriteLine(" " + word);
                 }
             }
+        }
+
+        private static void Task_13_5_8()
+        {
+            Console.WriteLine("Введите слово и нажмите Enter, чтобы добавить его в очередь.");
+            Console.WriteLine();
+
+            //  запустим обработку очереди в отдельном потоке
+            StartQueueProcessing();
+
+            while (true)
+            {
+                var input = Console.ReadLine();
+                if (input == "peek")
+                {
+                    if (concurrentWords.TryPeek(out var peek))
+                    {
+                        Console.WriteLine(peek);
+                    }
+                }
+                else
+                {
+                    concurrentWords.Enqueue(input);
+                }
+            }
+        }
+
+        // метод, который обрабатывает и разбирает нашу очередь в отдельном потоке
+        // ( для выполнения задания изменять его не нужно )
+        static void StartQueueProcessing()
+        {
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+
+                while (true)
+                {
+                    Thread.Sleep(5000);
+                    if (concurrentWords.TryDequeue(out var element))
+                        Console.WriteLine("======>  " + element + " прошел очередь");
+                }
+            }).Start();
         }
     }
 }
