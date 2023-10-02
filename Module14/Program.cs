@@ -7,6 +7,7 @@ namespace Module14
         static void Main(string[] args)
         {
             Task_4();
+            Task_8();
         }
 
         private static void Task_4()
@@ -22,6 +23,20 @@ namespace Module14
             }
 
             list.Sort();
+        }
+
+        private static void Task_8()
+        {
+            var objects = new List<object>()
+            {
+                1,
+                "Сергей ",
+                "Андрей ",
+                300,
+            };
+
+            foreach (var element in objects.Where(x => x is string).OrderBy(x => x.ToString()).ToArray())
+                Console.WriteLine(element);
         }
     }
 }
