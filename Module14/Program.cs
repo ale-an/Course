@@ -9,6 +9,7 @@ namespace Module14
             Task_4();
             Task_8();
             Task_14_1_1();
+            Task_14_1_2();
         }
 
         private static void Task_4()
@@ -56,6 +57,21 @@ namespace Module14
             {
                 Console.WriteLine(city.Name);
             }
+        }
+
+        private static void Task_14_1_2()
+        {
+            string[] text =
+            {
+                "Раз два три",
+                "четыре пять шесть",
+                "семь восемь девять"
+            };
+
+            var words = text.SelectMany(x => x.Split(' '));
+
+            foreach (var word in words)
+                Console.WriteLine(word);
         }
     }
 }
