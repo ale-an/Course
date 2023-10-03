@@ -10,6 +10,8 @@ namespace Module14
             Task_8();
             Task_14_1_1();
             Task_14_1_2();
+            Task_14_1_5();
+            Task_14_1_6();
         }
 
         private static void Task_4()
@@ -72,6 +74,37 @@ namespace Module14
 
             foreach (var word in words)
                 Console.WriteLine(word);
+        }
+
+        private static void Task_14_1_5()
+        {
+            var companies = new Dictionary<string, string[]>();
+
+            companies.Add("Apple", new[] {"Mobile", "Desktop"});
+            companies.Add("Samsung", new[] {"Mobile"});
+            companies.Add("IBM", new[] {"Desktop"});
+
+            var mobileCompanies = companies.Where(x => x.Value.Contains("Mobile"));
+
+            foreach (var mobileCompany in mobileCompanies)
+                Console.WriteLine(mobileCompany.Key);
+        }
+
+        private static void Task_14_1_6()
+        {
+            var numsList = new List<int[]>()
+            {
+                new[] {2, 3, 7, 1},
+                new[] {45, 17, 88, 0},
+                new[] {23, 32, 44, -6},
+            };
+
+            var newList = numsList.SelectMany(x => x).OrderBy(x => x);
+
+            foreach (var element in newList)
+            {
+                Console.WriteLine(element);
+            }
         }
     }
 }
