@@ -12,6 +12,7 @@ namespace Module14
             Task_14_1_2();
             Task_14_1_5();
             Task_14_1_6();
+            Task_14_2_1();
         }
 
         private static void Task_4()
@@ -104,6 +105,20 @@ namespace Module14
             foreach (var element in newList)
             {
                 Console.WriteLine(element);
+            }
+        }
+
+        private static void Task_14_2_1()
+        {
+            string[] words = {"Обезьяна", "Лягушка", "Кот", "Собака", "Черепаха"};
+            var animals = words.Select(x => new
+            {
+                Name = x,
+            }).OrderBy(x => x.Name.Length);
+            
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal.Name);
             }
         }
     }
