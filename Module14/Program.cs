@@ -14,6 +14,7 @@ namespace Module14
             Task_14_1_6();
             Task_14_2_1();
             Task_14_2_3();
+            Task_14_2_4();
         }
 
         private static void Task_4()
@@ -145,6 +146,36 @@ namespace Module14
             {
                 Console.WriteLine(sApplication.Name + ", " + sApplication.YearOfBirth);
             }
+        }
+
+        private static void Task_14_2_4()
+        {
+            var students = new List<Student>
+            {
+                new Student {Name = "Андрей", Age = 23, Languages = new List<string> {"английский", "немецкий"}},
+                new Student {Name = "Сергей", Age = 27, Languages = new List<string> {"английский", "французский"}},
+                new Student {Name = "Дмитрий", Age = 29, Languages = new List<string> {"английский", "испанский"}}
+            };
+
+            var coarses = new List<Coarse>
+            {
+                new Coarse {Name = "Язык программирования C#", StartDate = new DateTime(2020, 12, 20)},
+                new Coarse {Name = "Язык SQL и реляционные базы данных", StartDate = new DateTime(2020, 12, 15)},
+            };
+
+            var studentsWithCoarses = from stud in students
+                where stud.Age < 29
+                where stud.Languages.Contains("английский")
+                let yearOfBirth = DateTime.Now.Year - stud.Age
+                from coarse in coarses
+                where coarse.Name == "Язык программирования C#"
+                select new
+                {
+                    Name = stud.Name, CoarseName = coarse.Name, YearOfBirth = yearOfBirth
+                };
+
+            foreach (var stud in studentsWithCoarses)
+                Console.WriteLine($"Студент {stud.Name} добавлен курс {stud.CoarseName}");
         }
     }
 }
