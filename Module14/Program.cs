@@ -1,6 +1,4 @@
-﻿using System.Net.Sockets;
-
-namespace Module14
+﻿namespace Module14
 {
     public class Program
     {
@@ -16,8 +14,8 @@ namespace Module14
             Task_14_2_3();
             Task_14_2_4();
             Task_14_2_5();
+            Task_14_2_10();
         }
-
 
         private static void Task_4()
         {
@@ -182,14 +180,14 @@ namespace Module14
 
         private static void Task_14_2_5()
         {
-            var contacts = new List<Contact>()
+            var contacts = new List<Contact1>()
             {
-                new Contact() {Name = "Андрей", Phone = 7999945005},
-                new Contact() {Name = "Сергей", Phone = 799990455},
-                new Contact() {Name = "Иван", Phone = 79999675},
-                new Contact() {Name = "Игорь", Phone = 8884994},
-                new Contact() {Name = "Анна", Phone = 665565656},
-                new Contact() {Name = "Василий", Phone = 3434}
+                new Contact1() {Name = "Андрей", Phone = 7999945005},
+                new Contact1() {Name = "Сергей", Phone = 799990455},
+                new Contact1() {Name = "Иван", Phone = 79999675},
+                new Contact1() {Name = "Игорь", Phone = 8884994},
+                new Contact1() {Name = "Анна", Phone = 665565656},
+                new Contact1() {Name = "Василий", Phone = 3434}
             };
 
             while (true)
@@ -204,6 +202,32 @@ namespace Module14
                 {
                     Console.WriteLine(contact.Name);
                 }
+            }
+        }
+
+        private static void Task_14_2_10()
+        {
+            var phoneBook = new List<Contact>();
+
+            phoneBook.Add(new Contact("Игорь", "Николаев", 79990000001, "igor@example.com"));
+            phoneBook.Add(new Contact("Сергей", "Довлатов", 79990000010, "serge@example.com"));
+            phoneBook.Add(new Contact("Анатолий", "Карпов", 79990000011, "anatoly@example.com"));
+            phoneBook.Add(new Contact("Валерий", "Леонтьев", 79990000012, "valera@example.com"));
+            phoneBook.Add(new Contact("Сергей", "Брин", 799900000013, "serg@example.com"));
+            phoneBook.Add(new Contact("Иннокентий", "Смоктуновский", 799900000013, "innokentii@example.com"));
+
+            phoneBook = phoneBook.OrderBy(x => x.Name).ThenBy(x => x.LastName).ToList();
+
+            while (true)
+            {
+                var keyChar = Console.ReadLine();
+
+                var page = Convert.ToInt32(keyChar);
+
+                var pagedContacts = phoneBook.Skip(page * 2 - 2).Take(2);
+
+                foreach (var record in pagedContacts)
+                    Console.WriteLine(record.Name + " " + record.LastName + ": " + record.PhoneNumber);
             }
         }
     }
