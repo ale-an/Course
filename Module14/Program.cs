@@ -13,6 +13,7 @@ namespace Module14
             Task_14_1_5();
             Task_14_1_6();
             Task_14_2_1();
+            Task_14_2_3();
         }
 
         private static void Task_4()
@@ -115,10 +116,34 @@ namespace Module14
             {
                 Name = x,
             }).OrderBy(x => x.Name.Length);
-            
+
             foreach (var animal in animals)
             {
                 Console.WriteLine(animal.Name);
+            }
+        }
+
+        private static void Task_14_2_3()
+        {
+            List<Student> students = new List<Student>
+            {
+                new Student {Name = "Андрей", Age = 23, Languages = new List<string> {"английский", "немецкий"}},
+                new Student {Name = "Сергей", Age = 27, Languages = new List<string> {"английский", "французский"}},
+                new Student {Name = "Дмитрий", Age = 29, Languages = new List<string> {"английский", "испанский"}},
+                new Student {Name = "Василий", Age = 24, Languages = new List<string> {"испанский", "немецкий"}}
+            };
+
+            var applications = from s in students
+                where s.Age < 27
+                let yearOfBirth = DateTime.Now.Year - s.Age
+                select new Application()
+                {
+                    Name = s.Name,
+                    YearOfBirth = yearOfBirth
+                };
+            foreach (var sApplication in applications)
+            {
+                Console.WriteLine(sApplication.Name + ", " + sApplication.YearOfBirth);
             }
         }
     }
