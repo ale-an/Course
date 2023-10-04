@@ -15,7 +15,9 @@ namespace Module14
             Task_14_2_1();
             Task_14_2_3();
             Task_14_2_4();
+            Task_14_2_5();
         }
+
 
         private static void Task_4()
         {
@@ -176,6 +178,33 @@ namespace Module14
 
             foreach (var stud in studentsWithCoarses)
                 Console.WriteLine($"Студент {stud.Name} добавлен курс {stud.CoarseName}");
+        }
+
+        private static void Task_14_2_5()
+        {
+            var contacts = new List<Contact>()
+            {
+                new Contact() {Name = "Андрей", Phone = 7999945005},
+                new Contact() {Name = "Сергей", Phone = 799990455},
+                new Contact() {Name = "Иван", Phone = 79999675},
+                new Contact() {Name = "Игорь", Phone = 8884994},
+                new Contact() {Name = "Анна", Phone = 665565656},
+                new Contact() {Name = "Василий", Phone = 3434}
+            };
+
+            while (true)
+            {
+                var keyChar = Console.ReadLine();
+
+                var page = Convert.ToInt32(keyChar);
+
+                var pagedContacts = contacts.Skip(page * 2 - 2).Take(2);
+
+                foreach (var contact in pagedContacts)
+                {
+                    Console.WriteLine(contact.Name);
+                }
+            }
         }
     }
 }
