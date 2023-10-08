@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             Task_15_1_4();
+            Task_15_1_5();
         }
 
         private static void Task_15_1_4()
@@ -18,6 +19,26 @@
             foreach (var s in sameSymbol)
             {
                 Console.WriteLine(s);
+            }
+        }
+
+        private static void Task_15_1_5()
+        {
+            var softwareManufacturers = new List<string>()
+            {
+                "Microsoft", "Apple", "Oracle"
+            };
+ 
+            var hardwareManufacturers = new List<string>()
+            {
+                "Apple", "Samsung", "Intel"
+            };
+
+            var itCompanies = softwareManufacturers.Union(hardwareManufacturers);
+
+            foreach (var c in itCompanies)
+            {
+                Console.WriteLine(c);
             }
         }
     }
