@@ -1,4 +1,6 @@
-﻿namespace Module15
+﻿using System.Net.Sockets;
+
+namespace Module15
 {
     public class Program
     {
@@ -9,7 +11,8 @@
             Task_15_1_6();
             Task_15_2_1(5);
             Task_15_2_2();
-            Task_15_2_3(new []{1, 2, 3, 4});
+            Task_15_2_3(new[] {1, 2, 3, 4});
+            Task_15_2_8();
         }
 
         private static void Task_15_1_4()
@@ -99,6 +102,41 @@
         static double Task_15_2_3(int[] numbers)
         {
             return numbers.Sum() / (double) numbers.Length;
+        }
+
+        private static void Task_15_2_8()
+        {
+            var numbers = new List<int>();
+
+            while (true)
+            {
+                Console.WriteLine("Введите число, пожалуйста");
+                var text = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(text))
+                {
+                    continue;
+                }
+
+                if (!int.TryParse(text, out var number))
+                {
+                    continue;
+                }
+
+                numbers.Add(number);
+
+                var count = numbers.Count;
+                var sum = numbers.Sum();
+                var max = numbers.Max();
+                var min = numbers.Min();
+                var average = numbers.Average();
+
+                Console.WriteLine($"Чисел в списке: {count}");
+                Console.WriteLine($"Сумма всех чисел: {sum}");
+                Console.WriteLine($"Наибольшее число: {max}");
+                Console.WriteLine($"Наименьшее число: {min}");
+                Console.WriteLine($"Среднее значение: {average}");
+            }
         }
     }
 }
