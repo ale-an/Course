@@ -9,6 +9,7 @@
             Task_15_1_6();
             Task_15_2_1(5);
             Task_15_2_2();
+            Task_15_2_3(new []{1, 2, 3, 4});
         }
 
         private static void Task_15_1_4()
@@ -93,6 +94,11 @@
                 contacts.Count(s => s.Phone.ToString().Length != 11 || s.Phone.ToString()[0] != '7');
 
             Console.WriteLine($"Неверных номеров телефонов: {incorrectContacts}");
+        }
+
+        static double Task_15_2_3(int[] numbers)
+        {
+            return numbers.Sum() / (double) numbers.Length;
         }
     }
 }
