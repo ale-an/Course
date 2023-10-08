@@ -7,6 +7,7 @@
             Task_15_1_4();
             Task_15_1_5();
             Task_15_1_6();
+            Task_15_2_1(5);
         }
 
         private static void Task_15_1_4()
@@ -61,6 +62,18 @@
             var symbols = suggestion.Except(marks).Distinct().Count();
 
             Console.WriteLine($"Уникальных символов: {symbols}");
+        }
+
+        static long Task_15_2_1(int number)
+        {
+            var numbers = new List<long>();
+
+            for (int i = 1; i <= number; i++)
+            {
+                numbers.Add(i);
+            }
+
+            return numbers.Aggregate((x, y) => x * y);
         }
     }
 }
