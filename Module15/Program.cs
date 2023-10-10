@@ -13,6 +13,7 @@ namespace Module15
             Task_15_2_2();
             Task_15_2_3(new[] {1, 2, 3, 4});
             Task_15_2_8();
+            Task_15_3_3();
         }
 
         private static void Task_15_1_4()
@@ -85,12 +86,12 @@ namespace Module15
         {
             var contacts = new List<Contact>()
             {
-                new Contact() {Name = "Андрей", Phone = 79994500508},
-                new Contact() {Name = "Сергей", Phone = 799990455},
-                new Contact() {Name = "Иван", Phone = 79999675334},
-                new Contact() {Name = "Игорь", Phone = 8884994},
-                new Contact() {Name = "Анна", Phone = 665565656},
-                new Contact() {Name = "Василий", Phone = 3434}
+                new Contact("Андрей", 79994500508),
+                new Contact("Сергей", 799990455),
+                new Contact("Иван", 79999675334),
+                new Contact("Игорь", 8884994),
+                new Contact("Анна", 665565656),
+                new Contact("Василий", 343)
             };
 
             var incorrectContacts =
@@ -136,6 +137,33 @@ namespace Module15
                 Console.WriteLine($"Наибольшее число: {max}");
                 Console.WriteLine($"Наименьшее число: {min}");
                 Console.WriteLine($"Среднее значение: {average}");
+            }
+        }
+
+        private static void Task_15_3_3()
+        {
+            var phoneBook = new List<Contact>();
+
+// добавляем контакты
+            phoneBook.Add(new Contact("Игорь", 79990000001, "igor@example.com"));
+            phoneBook.Add(new Contact("Сергей", 79990000010, "serge@example.com"));
+            phoneBook.Add(new Contact("Анатолий", 79990000011, "anatoly@example.com"));
+            phoneBook.Add(new Contact("Валерий", 79990000012, "valera@example.com"));
+            phoneBook.Add(new Contact("Сергей", 799900000013, "serg@gmail.com"));
+            phoneBook.Add(new Contact("Иннокентий", 799900000013, "innokentii@example.com"));
+
+            var group = phoneBook
+                .GroupBy(x => x.Email.Substring(x.Email.IndexOf('@')));
+
+            foreach (var contacts in group)
+            {
+                var realOrFake = contacts.Key.Contains("example") ? "Фейковые адреса" : "Реальные адреса";
+
+                Console.WriteLine($"{realOrFake}:");
+                foreach (var contact in contacts)
+                {
+                    Console.WriteLine($"{contact.Name} — {contact.Email} — {contact.Phone}");
+                }
             }
         }
     }
