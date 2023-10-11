@@ -1,6 +1,4 @@
-﻿using System.Net.Sockets;
-
-namespace Module15
+﻿namespace Module15
 {
     public class Program
     {
@@ -17,8 +15,8 @@ namespace Module15
             Task_15_4_1();
             Task_15_4_2();
             Task_15_5_4();
+            Practice();
         }
-
 
         private static void Task_15_1_4()
         {
@@ -249,6 +247,24 @@ namespace Module15
 
             foreach (var a in attempt)
                 Console.WriteLine(a);
+        }
+
+        private static void Practice()
+        {
+            var classes = new[]
+            {
+                new Classroom {Students = {"Evgeniy", "Sergey", "Andrew"},},
+                new Classroom {Students = {"Anna", "Viktor", "Vladimir"},},
+                new Classroom {Students = {"Bulat", "Alex", "Galina"},}
+            };
+            var allStudents = GetAllStudents(classes);
+
+            Console.WriteLine(string.Join(" ", allStudents));
+        }
+
+        static string[] GetAllStudents(Classroom[] classes)
+        {
+            return classes.SelectMany(x => x.Students).ToArray();
         }
     }
 }
