@@ -16,7 +16,9 @@ namespace Module15
             Task_15_3_3();
             Task_15_4_1();
             Task_15_4_2();
+            Task_15_5_4();
         }
+
 
         private static void Task_15_1_4()
         {
@@ -235,6 +237,18 @@ namespace Module15
                     Console.WriteLine(employ.Name);
                 }
             }
+        }
+
+        private static void Task_15_5_4()
+        {
+            var animals = new List<string>() {"Кошка", "Собака", "Хомяк", "Хамелеон"};
+
+            var attempt = animals.Where(animal => animal.StartsWith("Х"));
+
+            animals.Remove("Кошка");
+
+            foreach (var a in attempt)
+                Console.WriteLine(a);
         }
     }
 }
